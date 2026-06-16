@@ -1,49 +1,157 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <!DOCTYPE html>
-
 <html>
 <head>
 
-<title>User Registration</title>
+<title>DigiBook Registration</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
 <style>
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    font-family: Arial;
-    background-color:#f0f0f0;
+
+height:100vh;
+
+background:
+linear-gradient(
+rgba(0,0,0,0.75),
+rgba(0,0,0,0.75)
+),
+url("Images/Book4.png");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-family:'Segoe UI',sans-serif;
+
 }
 
-.container{
+.register-card{
 
-    width:350px;
-    background:white;
-    padding:20px;
-    margin:auto;
-    margin-top:100px;
+width:500px;
 
-    border-radius:10px;
+padding:35px;
 
-    box-shadow:0px 0px 10px gray;
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,0.15);
+
+box-shadow:0 8px 32px rgba(0,0,0,0.5);
+
+color:white;
+
 }
 
-input{
+.logo{
 
-    width:100%;
-    padding:10px;
-    margin-top:10px;
+font-size:55px;
+
+text-align:center;
+
 }
 
-button{
+.title{
 
-    width:100%;
-    padding:10px;
-    margin-top:15px;
+text-align:center;
 
-    background:#007bff;
-    color:white;
+font-weight:bold;
 
-    border:none;
+}
+
+.subtitle{
+
+text-align:center;
+
+color:#dcdcdc;
+
+margin-bottom:20px;
+
+}
+
+.form-control{
+
+background:rgba(255,255,255,0.12);
+
+border:none;
+
+color:white;
+
+}
+
+.form-control:focus{
+
+background:rgba(255,255,255,0.18);
+
+color:white;
+
+box-shadow:none;
+
+}
+
+.form-control::placeholder{
+
+color:#dddddd;
+
+}
+
+.form-label{
+
+color:white;
+
+}
+
+.btn-register{
+
+background:#ff9800;
+
+border:none;
+
+font-weight:bold;
+
+padding:12px;
+
+}
+
+.btn-register:hover{
+
+background:#e68900;
+
+}
+
+.link{
+
+color:#ffcc80;
+
+text-decoration:none;
+
+}
+
+.link:hover{
+
+color:white;
+
 }
 
 </style>
@@ -52,25 +160,110 @@ button{
 
 <body>
 
-<div class="container">
+<div class="register-card">
 
-<h2>User Registration</h2>
+<div class="logo">📚</div>
+
+<h2 class="title">
+DigiBook
+</h2>
+
+<p class="subtitle">
+Create Your Account
+</p>
 
 <form action="RegisterServlet" method="post">
 
-<input type="text" name="name" placeholder="Enter Name">
+<div class="mb-3">
 
-<input type="email" name="email" placeholder="Enter Email">
+<label class="form-label">
+Full Name
+</label>
 
-<input type="password" name="password" placeholder="Enter Password">
+<input
+type="text"
+name="name"
+class="form-control"
+placeholder="Enter Full Name"
+required>
 
-<button type="submit">
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Email Address
+</label>
+
+<input
+type="email"
+name="email"
+class="form-control"
+placeholder="Enter Email"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Mobile Number
+</label>
+
+<input
+type="text"
+name="mobile"
+class="form-control"
+placeholder="Enter Mobile Number"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Password
+</label>
+
+<input
+type="password"
+name="password"
+class="form-control"
+placeholder="Create Password"
+required>
+
+</div>
+
+<div class="d-grid">
+
+<button
+type="submit"
+class="btn btn-register">
+
 Register
+
 </button>
 
+</div>
+
 </form>
+
+<hr class="mt-4 mb-3 text-light">
+
+<p class="text-center">
+
+Already have an account?
+
+<a href="login.jsp" class="link">
+
+Login Here
+
+</a>
+
+</p>
 
 </div>
 
 </body>
 </html>
+```

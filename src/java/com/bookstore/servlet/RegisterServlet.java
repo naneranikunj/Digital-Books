@@ -1,41 +1,77 @@
 package com.bookstore.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.dao.UserDAO;
-import com.bookstore.model.User;
-
 public class RegisterServlet extends HttpServlet {
 
+    @Override
     protected void doPost(
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String name =
+                request.getParameter("name");
 
-        User u = new User();
+        String email =
+                request.getParameter("email");
 
-        u.setName(name);
-        u.setEmail(email);
-        u.setPassword(password);
+        String mobile =
+                request.getParameter("mobile");
 
-        int status = UserDAO.registerUser(u);
+        String password =
+                request.getParameter("password");
 
-        if(status > 0) {
+        try {
 
-            response.sendRedirect("login.jsp");
+            Class.forName(
+                    "com.mysql.cj.jdbc.Driver");
 
-        } else {
+            Connection con =
+                    java.sql.DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/digi_book",
+                    "root",
+                    "1290");
 
-            response.sendRedirect("register.jsp");
+            PreparedStatement ps =
+                    con.prepareStatement(
+                    "insert into users(name,email,mobile,password) values(?,?,?,?)");
+
+            ps.setString(1,name);
+            ps.setString(2,email);
+            ps.setString(3,mobile);
+            ps.setString(4,password);
+
+            int i = ps.executeUpdate();
+            
+            ps.close();
+            con.close();
+
+            if(i>0){
+
+                response.sendRedirect(
+                        "login.jsp");
+
+            }else{
+
+                response.getWriter().println(
+                        "Registration Failed");
+
+            }
+
+        }
+    catch(Exception e){
+    response.setContentType("text/html");
+    response.getWriter().println("<h3>Error:</h3>");
+    response.getWriter().println(e.getMessage());
+    e.printStackTrace();
+}
         }
     }
-}

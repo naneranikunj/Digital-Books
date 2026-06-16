@@ -2,40 +2,67 @@ package com.bookstore.model;
 
 public class User {
 
-    private int userId;
-    private String name;
-    private String email;
-    private String password;
+    private int bookId;
+    private String title;
+    private String author;
+    private String category;
+    private String description;
+    private double rentPrice;
+    private double buyPrice;
 
-    public int getUserId() {
-        return userId;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCategory() {
+        return category;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getRentPrice() {
+        return rentPrice;
+    }
+
+    public void setRentPrice(double rentPrice) {
+        this.rentPrice = rentPrice;
+    }
+
+    public double getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(double buyPrice) {
+        this.buyPrice = buyPrice;
     }
 }
